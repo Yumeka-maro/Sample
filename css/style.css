@@ -1,0 +1,481 @@
+@charset "UTF-8";
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h2 {
+    font-size: 45px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.title {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+header ul {
+    display: flex;
+}
+
+/*.gnavi img {
+    width: 20px;
+}*/
+
+.gnavi li a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+.gnavi li a {
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+}
+
+.gnavi li.current a,
+.gnavi li a:hover {
+    color: #000;
+}
+
+.gnavi li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    /*線の形状*/
+    width: 80%;
+    height: 1px;
+    background: #000;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);
+    /*X方向0、Y方向1*/
+    transform-origin: center top;
+    /*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.gnavi li.current a::after,
+.gnavi li a:hover::after {
+    transform: scale(1, 1);
+    /*X方向にスケール拡大*/
+}
+
+.mainvisual {
+    margin: 0 auto;
+    height: 100vh;
+    width: 90vw;
+}
+
+.mainvisual img {
+    width: 90vw;
+    height: 100vh;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.mainvisual .fade {
+    position: relative;
+}
+
+.mainvisual .fade li {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    animation: fade 15s infinite;
+}
+
+.mainvisual .fade li:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.mainvisual .fade li:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.mainvisual .fade li:nth-child(3) {
+    animation-delay: 10s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.about,
+.menu,
+.shopinfo {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 100px;
+    margin-top: 50px;
+}
+
+.about img {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+
+h4 {
+    font-family: 'Shippori Mincho', serif;
+}
+
+p {
+    font-family: 'Shippori Mincho', serif;
+    margin-left: 5px;
+}
+
+p::before {
+    content: "-";
+    margin-right: 5px;
+}
+
+
+.content1,
+.content2 {
+    display: flex;
+    font-family: 'Shippori Mincho', serif;
+    margin-top: 30px;
+    width: 70%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.content1 img {
+    margin-right: 40px;
+}
+
+.content2 img {
+    margin-left: 40px;
+}
+
+.fadein {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+
+.text span {
+    font-size: 35px;
+}
+
+.about p,
+.menu p,
+.shopinfo p {
+    margin-bottom: 50px;
+    font-size: 15px;
+}
+
+.slider {
+    /*横幅94%で左右に余白を持たせて中央寄せ*/
+    width: 94%;
+    margin: 0 auto;
+}
+
+.slider img {
+    width: 100%;
+    /*スライダー内の画像を横幅100%に*/
+    height: 300px;
+    object-fit: cover;
+}
+
+.slider img:hover {
+    opacity: 0.7;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+    margin: 0 10px;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+    position: absolute;
+    /*絶対配置にする*/
+    top: 42%;
+    cursor: pointer;
+    /*マウスカーソルを指マークに*/
+    outline: none;
+    /*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #000;
+    /*矢印の色*/
+    border-right: 2px solid #000;
+    /*矢印の色*/
+    height: 15px;
+    width: 15px;
+}
+
+
+.slick-prev {
+    /*戻る矢印の位置と形状*/
+    left: -1.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {
+    /*次へ矢印の位置と形状*/
+    right: -1.5%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width: 8px;
+    /*ドットボタンのサイズ*/
+    height: 8px;
+    /*ドットボタンのサイズ*/
+    display: block;
+    border-radius: 50%;
+    background: #ccc;
+    /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+    background: #000;
+    /*ドットボタンの現在地表示の色*/
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-family: 'Shippori Mincho', serif;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.products img {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+
+}
+
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /*rem算出をしやすくするために*/
+}
+
+.button {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.btn,
+a.btn,
+button.btn {
+    font-size: 23px;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 10px 40px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #212529;
+    border-radius: 0.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+a.btn-border {
+    border-radius: 0;
+}
+
+a.btn-border:before,
+a.btn-border:after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+
+    content: '';
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    background: #000;
+}
+
+a.btn-border:before {
+    top: 0;
+    left: 0;
+}
+
+a.btn-border:after {
+    right: 0;
+    bottom: 0;
+}
+
+a.btn-border:hover:before,
+a.btn-border:hover:after {
+    width: 0;
+}
+
+
+.container {
+    display: flex;
+    font-family: 'Shippori Mincho', serif;
+    margin: 0 auto;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.info dl {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 30px;
+    font-size: 15px;
+    width: 500px;
+}
+
+.info dt {
+    width: 20%;
+}
+
+.info dd {
+    width: 80%;
+}
+
+.shop {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    font-size: 10px;
+    padding: 10px;
+    margin-top: 100px;
+
+}
+
+@media(max-width:880px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .gnavi li a {
+        font-size: 10px;
+    }
+
+    .content1 {
+        flex-direction: column-reverse;
+    }
+
+    .content2,
+    .container {
+        flex-direction: column;
+    }
+
+    .content1 {
+        margin-bottom: 50px;
+    }
+
+    .content1 img {
+        margin-right: 0px;
+        margin-top: 10px;
+    }
+    
+    .content2 img {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .slider img {
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .info dl {
+        width: 100%;
+    }
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:414px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
