@@ -453,20 +453,28 @@ footer {
     .content1 img {
         margin-right: 0px;
         margin-top: 10px;
+        height: 300px;
+        object-fit: contain;
     }
-    
+
     .content2 img {
         margin-left: 0px;
         margin-top: 10px;
+        height: 300px;
+        object-fit: contain;
     }
 
     .slider img {
-        height: 100px;
+        height: 200px;
         object-fit: contain;
     }
 
     .info dl {
         width: 100%;
+    }
+
+    .map {
+        margin-top: 10px;
     }
 
     .products {
@@ -478,4 +486,6 @@ footer {
     .products {
         grid-template-columns: 1fr;
     }
+
+  
 }
